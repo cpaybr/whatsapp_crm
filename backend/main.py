@@ -1,7 +1,20 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from config.supabase import supabase
+from routes.auth import router as auth_router
 
 app = FastAPI()
+
+# Allow requests from any origin during early development
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.include_router(auth_router, prefix="/auth")
 
 @app.get("/health")
 async def health_check():

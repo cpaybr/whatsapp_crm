@@ -12,8 +12,10 @@
    - /main.py: Configuração do FastAPI
    - /routes/auth.py: Endpoints de login/registro
    - /config/supabase.py: Conexão com Supabase
-3. Endpoint inicial:
-   - GET /health: Retorna {"status": "ok"}
+3. Endpoints iniciais:
+   - `GET /health`: verifica se o servidor está online.
+   - `POST /auth/register`: cria um usuário e perfil no Supabase.
+   - `POST /auth/login`: autentica o usuário e retorna o token.
 
 ## Frontend (Nuxt 3)
 
